@@ -9,7 +9,10 @@ import { AnimalDetail } from "./Animal/AnimalDetail"
 import { LocationDetail } from "./Location/LocationDetail"
 import { CustomerDetail } from "./Customer/CustomerDetail"
 import { EmployeeDetail } from "./Employee/EmployeeDetail"
-import { AnimalForm } from "./Animal/AnimalForm"  
+import { AnimalForm } from "./Animal/AnimalForm"
+import { CustomerForm } from "./Customer/CustomerForm"
+import { EmployeeForm } from "./Employee/EmployeeForm"
+import { LocationForm } from "./Location/LocationForm"
 
 export const ApplicationViews = () => {
     return (
@@ -25,12 +28,15 @@ export const ApplicationViews = () => {
 
                 <Route exact path="/customers" element={<CustomerList/>} />
                 <Route path="/customers/:customerId" element={<CustomerDetail />} />
+                <Route path="/customers/create" element={<CustomerForm />} />
 
                 <Route exact path="/employees" element={<EmployeeList/>} />
                 <Route path="/employees/:employeeId" element={<EmployeeDetail />} />
+                <Route path="/employees/create" element={<EmployeeForm />} />
 
                 <Route exact path="/locations" element={<LocationList/>} />
                 <Route path="/locations/:locationId" element={<LocationDetail />} />
+                <Route path="/locations/create" element={<LocationForm />} />
             </Routes>
         </>
     )

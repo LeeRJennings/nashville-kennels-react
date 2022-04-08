@@ -16,3 +16,13 @@ export const deleteLocation = (id) => {
       method: "DELETE"
   }).then(result => result.json())
 }
+
+export const addLocation = (newLocation) => {
+  return fetch(`${remoteURL}/locations`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(newLocation)
+  }).then(response => response.json())
+}
