@@ -13,10 +13,7 @@ export const AnimalDetail = () => {
     useEffect(() => {
        getAnimalById(animalId)
         .then(animal => {
-            setAnimal({
-                name: animal.name,
-                breed: animal.breed
-            })
+            setAnimal(animal)
             setIsLoading(false)
         })
     }, [animalId])
