@@ -1,5 +1,5 @@
 import React from "react"
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { Home } from "./Home"
 import { AnimalList } from "./Animal/AnimalList"
 import { CustomerList } from "./Customer/CustomerList"
@@ -13,16 +13,33 @@ import { AnimalForm } from "./Animal/AnimalForm"
 import { CustomerForm } from "./Customer/CustomerForm"
 import { EmployeeForm } from "./Employee/EmployeeForm"
 import { LocationForm } from "./Location/LocationForm"
+import { MadLib } from "./MadLib"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
 
-export const ApplicationViews = () => {
+export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
+    const PrivateRoute = ({ children }) => {
+        return isAuthenticated ? children : <Navigate to="/login" />
+    }
+
+    const setAuthUser = (user) => {
+        sessionStorage.setItem("kennel_customer", JSON.stringify(user))
+        setIsAuthenticated(sessionStorage.getItem("kennel_customer") !== null)
+    }
+    
     return (
         <>
             <Routes>
                 {/* Render the home when http://localhost:3000/ */}
                 <Route exact path="/" element={<Home />} />
-
+            
                 {/* Render the animal list when http://localhost:3000/animals */}
-                <Route exact path="/animals" element={<AnimalList />} />
+                <Route exact path="/animals" element={
+                    <PrivateRoute>
+                        <AnimalList />
+                    </PrivateRoute>
+                } />
+
                 <Route path="/animals/:animalId" element={<AnimalDetail />} />
                 <Route path="/animals/create" element={<AnimalForm />} /> 
 
@@ -37,6 +54,12 @@ export const ApplicationViews = () => {
                 <Route exact path="/locations" element={<LocationList/>} />
                 <Route path="/locations/:locationId" element={<LocationDetail />} />
                 <Route path="/locations/create" element={<LocationForm />} />
+
+                <Route exact path="/login" element={<Login setAuthUser={setAuthUser} />} />
+                
+                <Route exact path="/register" element={<Register />} />
+
+                <Route path="/madlib" element={<MadLib />} />
             </Routes>
         </>
     )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addLocation } from '../../modules/LocationManager';
 import "./LocationForm.css"
@@ -23,7 +23,7 @@ export const LocationForm = () => {
     const handleClickSaveLocation = (event) => {
         event.preventDefault()
         if (location.name === "" || location.address === "") {
-            window.alert("How many times do I have to tell you old man? Fill out the form!!")
+            window.alert("How many times do we have to tell you old man? Fill out the form!!")
         } else {
             setIsLoading(true)
             addLocation(location)
