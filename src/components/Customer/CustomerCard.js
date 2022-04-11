@@ -10,6 +10,10 @@ export const CustomerCard = ({customer, handleDeleteCustomer}) => (
             <button>Detailz plz</button>
         </Link>
         <br/>
+        <Link to={`/customers/${customer.id}/edit`}>
+            <button>Edit</button>
+        </Link>
+        <br/>
         <button type="button" onClick={() => handleDeleteCustomer(customer.id)}>Delete</button>
     </section>
 )
