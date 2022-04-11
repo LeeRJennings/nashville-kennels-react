@@ -15,6 +15,9 @@ export const AnimalCard = ({animal, handleDeleteAnimal}) => (
             <Link to={`/animals/${animal.id}`}>
                 <button>Gimme dem deets</button>
             </Link>
+            <Link to={`/animals/${animal.id}/edit`}>
+                <button>Edit</button>
+            </Link>
             <button type="button" onClick={() => handleDeleteAnimal(animal.id)}>Discharge</button>
         </div>
     </div>

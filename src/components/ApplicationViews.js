@@ -16,6 +16,8 @@ import { LocationForm } from "./Location/LocationForm"
 import { MadLib } from "./MadLib"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { AnimalEditForm } from "./Animal/AnimalEditForm"
+import { CustomerEditForm } from "./Customer/CustomerEditForm"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
     const PrivateRoute = ({ children }) => {
@@ -34,18 +36,19 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                 <Route exact path="/" element={<Home />} />
             
                 {/* Render the animal list when http://localhost:3000/animals */}
-                <Route exact path="/animals" element={
+                <Route exact path="/animals" element={<PrivateRoute> <AnimalList /> </PrivateRoute>} />
+                <Route exact path="/animals/:animalId" element={<PrivateRoute> <AnimalDetail /> </PrivateRoute>} />
+                <Route path="/animals/create" element={<PrivateRoute> <AnimalForm /> </PrivateRoute>} />
+                <Route path="/animals/:animalId/edit" element={
                     <PrivateRoute>
-                        <AnimalList />
+                        <AnimalEditForm />
                     </PrivateRoute>
                 } />
-
-                <Route path="/animals/:animalId" element={<AnimalDetail />} />
-                <Route path="/animals/create" element={<AnimalForm />} /> 
 
                 <Route exact path="/customers" element={<CustomerList/>} />
                 <Route path="/customers/:customerId" element={<CustomerDetail />} />
                 <Route path="/customers/create" element={<CustomerForm />} />
+                <Route path="/customers/:customerId/edit" element={<CustomerEditForm />} />
 
                 <Route exact path="/employees" element={<EmployeeList/>} />
                 <Route path="/employees/:employeeId" element={<EmployeeDetail />} />
