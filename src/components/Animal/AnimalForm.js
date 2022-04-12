@@ -111,6 +111,11 @@ export const AnimalForm = () => {
 					</select>
 				</div>
 			</fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="admitDate">Date admitted: </label>
+                </div>
+            </fieldset>
 			<button 
                 type="button" 
                 className="btn btn-primary"
