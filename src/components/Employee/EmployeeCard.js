@@ -10,6 +10,10 @@ export const EmployeeCard = ({employee, handleDeleteEmployee}) => (
             <button>D-Tails</button>
         </Link>
         <br/>
+        <Link to={`/employees/${employee.id}/edit`}>
+            <button>Edit</button>
+        </Link>
+        <br/>
         <button type="button" onClick={() => handleDeleteEmployee(employee.id)}>TERMINATE</button>
     </section>
 )

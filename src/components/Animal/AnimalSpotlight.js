@@ -17,7 +17,7 @@ export const AnimalSpotlight = ({animalId}) => {
             <div>
                 <h3>{animal.name}</h3>
                 <p>{animal.breed}</p>
-                <p>Owner: {animal.customer.name}</p>
+                <p>Owner: {animal.customer?.name}</p>
             </div>
       </div>  
     )
